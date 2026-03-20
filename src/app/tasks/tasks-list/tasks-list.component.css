@@ -99,4 +99,8 @@ button {
 
     max-width: var(--tile-width);
   }
+
+  #add_task_button{
+    align-self: center;
+  }
 }
