@@ -1,5 +1,5 @@
 *{
-  --description-height: 170px;
+  --description-height: 175px;
 }
 
 :host {
@@ -69,12 +69,14 @@ h3, p{
   width: 100%;
   height: var(--description-height);
   max-height: var(--description-height);
+  font-size: 14px;
+  line-height: 22px;
 
   padding-bottom: 20px;
 
   display: block; /* Fallback for non-webkit */
   display: -webkit-box;
-  -webkit-line-clamp: 10;
+  -webkit-line-clamp: 9;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
