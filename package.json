@@ -1,5 +1,5 @@
 {
-  "name": "first-angular-app",
+  "name": "dummy-tasks-manager",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
