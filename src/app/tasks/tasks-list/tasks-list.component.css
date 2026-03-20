@@ -1,0 +1,102 @@
+* {
+  --tile-width: 385px;
+  --tile-height: 400px;
+}
+
+:host {
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  width: calc(100% - 20px);
+  height: 100%;
+
+  padding-right: 20px;
+
+  gap: 10px;
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+h2, h3 {
+  color: var(--title-color);
+}
+
+button {
+  background-color: var(--primary-color-light);
+}
+
+#profile {
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+
+#avatar_container {
+  width: 75px;
+  height: 75px;
+  overflow: hidden;
+  border-radius: 50%;
+
+  contain: content;
+
+  border: 2px solid #7f56ba;
+}
+
+#avatar_container img {
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#tasks {
+
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--tile-width));
+  grid-auto-rows: var(--tile-height);
+  gap: 10px;
+
+  scrollbar-width: none;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 700px) {
+
+  :host {
+    align-items: center;
+    width: 100%;
+    padding-right: 0;
+  }
+
+  #profile {
+    position: initial;
+    flex-direction: row-reverse;
+  }
+
+  button {
+    align-self: flex-start;
+    margin-left: 20px;
+  }
+
+  #tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: var(--tile-width);
+  }
+}

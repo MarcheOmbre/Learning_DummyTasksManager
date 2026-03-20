@@ -1,0 +1,17 @@
+:host{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+
+  background-image: linear-gradient(to top, #2E1A47, #6A2C91);
+}
+
+h1{
+  color: var(--title-color);
+  text-align: center;
+  justify-content: center;
+}

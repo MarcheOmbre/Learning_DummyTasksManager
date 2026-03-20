@@ -1,0 +1,36 @@
+:host{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2{
+  color: var(--title-color);
+}
+
+#users{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  scrollbar-width: none;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 700px){
+
+  #users{
+    flex-direction: row;
+    justify-content: left;
+
+    width: 100%;
+    height: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}

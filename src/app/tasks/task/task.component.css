@@ -1,0 +1,86 @@
+*{
+  --description-height: 170px;
+}
+
+:host {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: start;
+  gap: 2px;
+
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+
+  padding: 10px;
+
+  border-radius: 10px;
+  background-color: var(--primary-color-dark);
+
+  border: none;
+}
+
+#header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-wrap: nowrap;
+  gap: 10px;
+
+  width: 100%;
+}
+
+#header input{
+
+  position: relative;
+  top: -5px;
+  left: -5px;
+
+  width: 30px;
+  height: 30px;
+
+  filter:invert(100%);
+}
+
+#header input:hover{
+  filter: invert(75%);
+}
+
+#header input:active{
+  filter: invert(50%);
+}
+
+h3{
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+h3, p{
+  text-align: left;
+  color: var(--button-title-color);
+}
+
+#description{
+
+  width: 100%;
+  height: var(--description-height);
+  max-height: var(--description-height);
+
+  padding-bottom: 20px;
+
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+button{
+  align-self: flex-end;
+  background-color: var(--primary-color-light);
+}

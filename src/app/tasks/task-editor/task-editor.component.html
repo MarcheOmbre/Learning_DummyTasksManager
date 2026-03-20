@@ -1,0 +1,21 @@
+<div id="background" (focus)="close()">
+
+  <div id="container">
+
+    <h2>{{ title }}</h2>
+    <label for="name">{{ nameLabel }}</label>
+    <input type="text" id="name" name="name" value="{{ nameInputSignal() }}" (keyup)="onNameChanged($event)"/>
+    <label for="description"> {{ descriptionLabel }} </label>
+    <textarea type="text" id="description" name="description" [value]="descriptionInputSignal()"
+              (keyup)="onDescriptionChanged($event)"></textarea>
+    <label for="dueDate"> {{ dueDateLabel }} </label>
+    <input type="date" id="dueDate" name="dueDate" [valueAsDate]="dueDateInputSignal()" (change)="onDueDateChanged($event)"/>
+
+    <div id="buttons_container">
+      <button (click)="close()" class="simple_button">{{ cancelButtonText }}</button>
+      <button #confirm_button class="simple_button">{{ confirmButtonTextSignal() }}</button>
+    </div>
+
+  </div>
+
+</div>

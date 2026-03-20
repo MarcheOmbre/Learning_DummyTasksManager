@@ -1,0 +1,9 @@
+<button #button (click)="onInternalClicked()">
+
+  <div class="image_container">
+    <img [ngSrc]=avatarSignal() alt="" fill>
+  </div>
+
+  <span class="name">{{nameSignal()}}</span>
+
+</button>

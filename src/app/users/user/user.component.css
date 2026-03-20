@@ -1,0 +1,46 @@
+button {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+
+  width: 200px;
+
+  padding: 10px;
+
+  border-radius: 45px;
+  background-color: var(--primary-color-dark);
+
+  border: none;
+}
+
+.image_container{
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  border-radius: 50%;
+
+  contain: content;
+}
+
+img{
+  object-fit: cover;
+}
+
+span{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  color: var(--button-title-color);
+}
+
+button:hover{
+  filter: brightness(200%);
+}
+
+button:hover span{
+  filter: brightness(0%);
+}

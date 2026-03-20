@@ -1,0 +1,15 @@
+<h2>{{ title }}</h2>
+<h2 [style.display]="informationSignal().length === 0 ? 'none' : 'block'">{{ informationSignal() }}</h2>
+<div id="profile">
+  <h2>{{ nameSignal() }}</h2>
+  <div id="avatar_container" [style.display]="avatarSignal().length === 0 ? 'none' : 'block'">
+    <img src="{{avatarSignal()}}" alt="avatar"/>
+  </div>
+</div>
+<button #add_task_button class="simple_button">{{ addTaskButtonText }}</button>
+
+<div id="tasks">
+  <ng-container #tasks></ng-container>
+</div>
+
+<task-editor-modal #task_editor> </task-editor-modal>

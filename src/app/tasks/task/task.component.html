@@ -1,0 +1,9 @@
+<div id="header">
+  <h3 id="title">{{ titleSignal() }}</h3>
+  <input type="image" src="./modify_icon.svg" (click)="onModifyInternalClicked()" alt="Modify button">
+</div>
+
+<p class="date">{{ dueDateSignal() }}</p>
+<p id="description">{{ descriptionSignal() }}</p>
+
+<button class="simple_button" (click)="onDoneInternalClicked()">{{ doneButtonText }}</button>

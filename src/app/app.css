@@ -1,0 +1,24 @@
+:host{
+  display: grid;
+  grid-template-columns: 300px 1fr 1fr;
+  grid-template-rows: 100px calc(100vh - 120px);
+
+  background-color: var(--background-color);
+}
+
+app-header{
+  grid-column: 1/4;
+}
+
+task-list{
+  grid-column: 2/4;
+}
+
+@media screen and (max-width: 700px){
+  :host{
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
