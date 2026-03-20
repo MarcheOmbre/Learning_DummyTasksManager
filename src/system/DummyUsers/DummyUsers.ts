@@ -15,8 +15,7 @@ class DummyUsersService implements IUsersService
       (
         users[i].id,
         users[i].firstName + " " + users[i].lastName,
-        `https://randomuser.me/api/portraits/${users[i].gender === 1 ? "men" : "women"}/` + users[i].id + ".jpg",
-        users[i].gender);
+        `https://randomuser.me/api/portraits/${users[i].gender === 1 ? "men" : "women"}/` + users[i].id + ".jpg");
     }
   }
 

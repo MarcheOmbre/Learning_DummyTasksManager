@@ -3,7 +3,7 @@ class User
   private readonly id: number;
   private readonly name: string;
   private readonly avatar: string;
-  private readonly gender: number;
+
 
   get Id(): number {
     return this.id;
@@ -17,16 +17,10 @@ class User
     return this.avatar;
   }
 
-  get Gender(): number {
-    return this.gender;
-  }
-
-
-  constructor(id: number, name: string, avatar: string, gender: number) {
+  constructor(id: number, name: string, avatar: string) {
     this.id = id;
     this.name = name;
     this.avatar = avatar;
-    this.gender = gender;
   }
 }
 
