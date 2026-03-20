@@ -15,7 +15,9 @@ export class TaskComponent {
 
 
   get Task(): Task | null {
+
     return this.currentTask;
+
   }
 
 
@@ -27,17 +29,23 @@ export class TaskComponent {
 
 
   public initialize(task: Task) {
+
     this.currentTask = task;
     this.titleSignal.set(this.currentTask.Title);
     this.descriptionSignal.set(this.currentTask.Description);
     this.dueDateSignal.set(this.currentTask.DueDate.toLocaleDateString("FR-fr"));
+
   }
 
   protected onModifyInternalClicked(): void {
+
     this.OnModify.emit(this);
+
   }
 
   protected onDoneInternalClicked(): void {
+
     this.OnDone.emit(this);
+
   }
 }

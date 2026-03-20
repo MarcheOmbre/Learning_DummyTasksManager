@@ -58,18 +58,23 @@ export class TasksListComponent implements OnInit, OnDestroy {
     // Subscribe to the events
     this.addTaskButtonRef().nativeElement.onclick = () => this.OnAddTaskButtonClicked();
     this.modifySubscription = this.taskEditorRef().OnConfirm.subscribe(task => TasksListComponent.OnTaskEditorConfirm(this, task))
+
   }
 
   public initialize(tasksService: ITasksService): void {
+
     this.tasksService = tasksService;
+
   }
 
   ngOnDestroy(): void {
+
     this.clear();
 
     // Unsubscribe from the events
     this.addTaskButtonRef().nativeElement.onclick = null;
     this.modifySubscription.unsubscribe();
+
   }
 
   public loadTasks(user: User | null): void {
@@ -113,9 +118,11 @@ export class TasksListComponent implements OnInit, OnDestroy {
       this.doneSubscriptionsMapper.set(taskComponent,
         taskComponent.OnModify.subscribe(_ => this.OnModifyTaskButtonClicked(task)));
     });
+
   }
 
   private OnAddTaskButtonClicked(): void {
+
     if (this.currentUser == null)
       throw new Error("No user selected");
 
@@ -125,9 +132,11 @@ export class TasksListComponent implements OnInit, OnDestroy {
         this.newTaskDescription,
         this.newTaskDueDate)
     );
+
   }
 
   private OnModifyTaskButtonClicked(task: Task): void {
+
     if (this.currentUser == null)
       throw new Error("No user selected");
 
@@ -135,6 +144,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
       throw new Error("No task selected");
 
     this.taskEditorRef().openToModify(task);
+
   }
 
   private static OnTaskEditorConfirm(taskListComponent: TasksListComponent, task: Task): void {
@@ -150,6 +160,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
 
     // Reload the tasks
     taskListComponent.loadTasks(taskListComponent.currentUser);
+
   }
 
   private static OnTaskDone(tasksListComponent: TasksListComponent, taskComponent: TaskComponent): void {
@@ -167,6 +178,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
 
     // Reload the tasks
     tasksListComponent.loadTasks(tasksListComponent.currentUser);
+
   }
 
   private clear(): void {
@@ -182,5 +194,6 @@ export class TasksListComponent implements OnInit, OnDestroy {
     this.addTaskButtonRef().nativeElement.style.display = "none";
 
     this.taskEditorRef().close();
+
   }
 }

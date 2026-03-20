@@ -35,32 +35,40 @@ export class TaskEditorComponent implements OnInit, OnDestroy {
 
     this.elementReference = elementReference;
 
-    // Update name
+    // Update button state depending on the name input
     effect(() => {
       console.log(this.nameInputSignal());
       this.confirmButtonRef().nativeElement.disabled = this.nameInputSignal().trim() == "";
     });
+
   }
 
   ngOnInit(): void {
 
     this.confirmButtonRef().nativeElement.disabled = true;
     this.confirmButtonRef().nativeElement.onclick = () => this.onConfirmButtonClicked();
+
   }
 
   ngOnDestroy(): void {
+
     this.clear();
+
+    this.confirmButtonRef().nativeElement.onclick = null;
+
   }
 
 
   public openToCreate(task: Task): void {
+
     this.openToModify(task);
     this.confirmButtonTextSignal.set(TaskEditorComponent.AddButtonText);
+
   }
 
   public openToModify(task: Task): void {
 
-    if(task == null)
+    if (task == null)
       throw new Error("No task to edit");
 
     this.task = task;
@@ -74,6 +82,7 @@ export class TaskEditorComponent implements OnInit, OnDestroy {
     this.descriptionInputSignal.set(this.task.Description ?? "");
     this.dueDateInputSignal.set(this.task.DueDate);
     this.confirmButtonTextSignal.set(TaskEditorComponent.ModifyButtonText);
+
   }
 
   public close(): void {
@@ -82,9 +91,11 @@ export class TaskEditorComponent implements OnInit, OnDestroy {
 
     // Set the UI
     this.elementReference.nativeElement.style.display = "none";
+
   }
 
   protected onConfirmButtonClicked(): void {
+
     if (this.task == null)
       throw new Error("No user selected");
 
@@ -97,18 +108,25 @@ export class TaskEditorComponent implements OnInit, OnDestroy {
     this.task.DueDate = new Date(this.dueDateInputSignal());
     this.OnConfirm.emit(this.task);
     this.close();
+
   }
 
   protected onNameChanged(event: Event): void {
+
     this.nameInputSignal.set((event.target as HTMLInputElement).value);
+
   }
 
   protected onDescriptionChanged(event: Event): void {
+
     this.descriptionInputSignal.set((event.target as HTMLInputElement).value);
+
   }
 
-  protected onDueDateChanged(event: Event): void{
+  protected onDueDateChanged(event: Event): void {
+
     this.dueDateInputSignal.set((event.target as HTMLInputElement).valueAsDate ?? new Date());
+
   }
 
   private clear(): void {
@@ -118,5 +136,6 @@ export class TaskEditorComponent implements OnInit, OnDestroy {
     this.nameInputSignal.set("");
     this.descriptionInputSignal.set("");
     this.dueDateInputSignal.set(new Date());
+
   }
 }

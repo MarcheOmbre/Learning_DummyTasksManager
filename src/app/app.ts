@@ -21,8 +21,10 @@ export class App implements OnInit, OnDestroy{
 
   private readonly usersService = new DummyUsersService();
   private readonly tasksService = new DummyTasksService();
+
   private readonly teamListRef = viewChild.required('team_list', {read: TeamComponent});
   private readonly tasksListRef = viewChild.required('tasks_list', {read: TasksListComponent});
+
   private onMemberSelectedSubscription !: Subscription;
 
   ngOnInit(): void {
@@ -34,9 +36,12 @@ export class App implements OnInit, OnDestroy{
     appTasksList.initialize(this.tasksService);
 
     this.onMemberSelectedSubscription = appTeam.OnSelected.subscribe(user => appTasksList.loadTasks(user));
+
   }
 
   ngOnDestroy() {
+
     this.onMemberSelectedSubscription?.unsubscribe();
+
   }
 }

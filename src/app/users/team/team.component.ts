@@ -15,8 +15,11 @@ export class TeamComponent implements OnDestroy {
 
   @Output() OnSelected = new EventEmitter<User | null>();
 
+
   protected readonly title = 'Team';
+
   private readonly viewContainerRef = viewChild.required('users', {read: ViewContainerRef});
+
   private onUserClickedSubscriptions = new Array<Subscription>();
   private selectedUserComponent: UserComponent | null = null;
 
@@ -30,11 +33,14 @@ export class TeamComponent implements OnDestroy {
       const component = this.viewContainerRef().createComponent(UserComponent).instance;
       component.initialize(user);
       this.onUserClickedSubscriptions.push(component.OnClicked.subscribe(userComponent => TeamComponent.onUserComponentSelected(this, userComponent)));
-    })
+    });
+
   }
 
   ngOnDestroy() {
+
     this.clear();
+
   }
 
   private static onUserComponentSelected(teamComponent : TeamComponent, userComponent: UserComponent | null): void {
@@ -51,6 +57,7 @@ export class TeamComponent implements OnDestroy {
       teamComponent.selectedUserComponent.Selected = true;
 
     teamComponent.OnSelected.emit(teamComponent.selectedUserComponent?.User ?? null);
+
   }
 
   private clear(): void {
@@ -62,5 +69,6 @@ export class TeamComponent implements OnDestroy {
 
     this.onUserClickedSubscriptions.forEach(subscription => subscription.unsubscribe());
     this.onUserClickedSubscriptions.length = 0;
+
   }
 }
